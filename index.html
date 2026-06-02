@@ -2,37 +2,505 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thomas Szymanski | Applied Statistics, AI & ML</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Thomas Szymanski</title>
+  <meta name="author" content="Thomas Szymanski">
+  <meta name="description" content="MS Applied Statistics, NYU Steinhardt">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg:       #1c1c1e;
+      --text:     #c9c5be;
+      --muted:    #6b6860;
+      --dim:      #3a3835;
+      --heading:  #e2ddd7;
+      --link:     #8ab4c9;
+      --border:   #2e2c29;
+      --nav-bg:   rgba(28, 28, 30, 0.92);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.75rem;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      transition: color 0.15s;
+    }
+    nav a:hover, nav a.active { color: var(--heading); }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 5.5rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-text { flex: 1; min-width: 0; }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--heading);
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+    }
+    h1 strong { font-weight: 700; }
+
+    .desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    p { margin-bottom: 0.9rem; font-size: 0.95rem; }
+    p:last-child { margin-bottom: 0; }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* avatar */
+    .avatar {
+      flex-shrink: 0;
+      width: 130px;
+    }
+    .avatar-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .avatar-circle img {
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: 50%;
+    }
+    .avatar-initials {
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .avatar-meta {
+      margin-top: 0.6rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* social icons */
+    .social {
+      display: flex;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+    .social a {
+      color: var(--muted);
+      font-size: 1rem;
+      transition: color 0.15s;
+      text-decoration: none;
+    }
+    .social a:hover { color: var(--heading); }
+
+    /* ── DIVIDER ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* ── SECTIONS ── */
+    section { margin-bottom: 2.5rem; }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+
+    /* projects */
+    .project { margin-bottom: 1.6rem; }
+    .project-title {
+      font-weight: 600;
+      color: var(--heading);
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem;
+    }
+    .project-title a { color: inherit; }
+    .project-title a:hover { color: var(--link); text-decoration: none; }
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      font-style: italic;
+    }
+    .project p { font-size: 0.875rem; }
+
+    /* experience / education */
+    .item { margin-bottom: 1.4rem; }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .item-role {
+      font-weight: 600;
+      color: var(--heading);
+      font-size: 0.9rem;
+    }
+    .item-dates {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .item-org {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .item ul {
+      padding-left: 1.1rem;
+      font-size: 0.875rem;
+    }
+    .item ul li { margin-bottom: 0.25rem; }
+
+    /* awards */
+    .award-list { list-style: none; }
+    .award-list li {
+      font-size: 0.875rem;
+      padding: 0.28rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .award-list li:last-child { border-bottom: none; }
+
+    /* coursework */
+    .course-block { margin-bottom: 0.9rem; }
+    .course-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.3rem;
+    }
+    .course-block p { font-size: 0.875rem; }
+
+    /* skill rows */
+    .skill-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+      font-size: 0.83rem;
+    }
+    .skill-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.25rem;
+    }
+    .skill-row span {
+      color: var(--text);
+    }
+    .skill-row span + span::before {
+      content: '·';
+      margin-right: 0.5rem;
+      color: var(--dim);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      z-index: 50;
+    }
+    .footer-inner {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 34px;
+      display: flex;
+      align-items: center;
+    }
+    .footer-inner span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .footer-inner a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .footer-inner a:hover { color: var(--heading); }
+
+    @media (max-width: 560px) {
+      .hero { flex-direction: column-reverse; align-items: center; }
+      .avatar { text-align: center; }
+      h1 { font-size: 1.65rem; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Thomas Szymanski</h1>
-    <p>AI Agentic Systems Researcher</p>
-  </header>
-  <main>
-    <section>
-      <h2>About</h2>
-      <p>Lifelong learner and polyglot studying Applied Statistics for Social Science Research (MS) at NYU Steinhardt. My academic path bridges History, Mathematics, and quantitative research, with a focus on applying statistical modeling to social-science questions. Through historical scholarship, I've developed strong analytical, interpretive, and communication skills, which complement my work with data and contribute to thoughtful, evidence-based inquiry.</p>
-    </section>
-    <section>
-      <h2>Projects</h2>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#about" class="active">about</a>
+    <a href="#projects">projects</a>
+    <a href="#experience">experience</a>
+    <a href="#education">education</a>
+    <a href="#coursework">coursework</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="about">
+    <div class="hero">
+      <div class="hero-text">
+        <h1><strong>Thomas Szymanski</strong></h1>
+        <p class="desc">Statistics, ML, AI.</p>
+
+        <p>I am an MS student in <a href="https://steinhardt.nyu.edu/departments/applied-statistics-social-science-and-humanities" target="_blank" rel="noopener">Applied Statistics for Social Science Research</a> at <a href="https://steinhardt.nyu.edu/" target="_blank" rel="noopener">NYU Steinhardt</a>, where I also serve as President of the Society for Statistics Students. My current work sits at the intersection of psychometrics, AI agentic systems, and social-science methodology.</p>
+
+        <div class="social">
+          <a href="https://github.com/tfs6492" title="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/thomas-szymanski-2327891b3/" title="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="avatar">
+        <div class="avatar-circle">
+          <span class="avatar-initials">TS</span>
+        </div>
+        <div class="avatar-meta">
+          NYU Steinhardt<br>
+          New York, NY
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="project-title"><a href="https://github.com/tfs6492/nys-ela-llm-eval" target="_blank" rel="noopener">LLM &amp; ML Evaluation of NYS ELA Reading Passages</a></div>
+      <div class="project-meta">Spring 2026 — with Howell Lu &amp; Ruiting Shen</div>
+      <p>Evaluated whether grade-level complexity of 2024–2025 New York State ELA reading passages is recoverable by LLMs and traditional readability metrics. Deployed Claude Opus 4.5 alongside six local models via Ollama and a Random Forest on Flesch-Kincaid, Dale-Chall, and CTTR features. All models showed systematic grade-level compression; the Random Forest achieved the lowest RMSE.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-title"><a href="https://github.com/tfs6492/duolingo-es-psychometrics" target="_blank" rel="noopener">Psychometric Modeling of Duolingo Spanish Reverse-Tap Exercises</a></div>
+      <div class="project-meta">Spring 2026 — with Shen Shen Lau</div>
+      <p>Applied EFA, Rasch IRT, and Cognitive Diagnostic Models to ~540K Duolingo trial responses. Near-ceiling accuracy (~95%) precluded latent class recovery; a pivot to response-time-based CDM yielded non-degenerate results. Verb tense/mood emerged as the most consistent driver of item difficulty across all three frameworks.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-title"><a href="https://github.com/tfs6492/sci-central-america-migration" target="_blank" rel="noopener">Social Connectedness and Central American Migration to the U.S.</a></div>
+      <div class="project-meta">Spring 2026 — with Genie Kwak</div>
+      <p>Analyzed Meta's Social Connectedness Index alongside DHS lawful permanent resident data (2013–2024). Four Central American countries exceeded global SCI averages by wide margins — Honduras at ~5× — and the SCI–immigration relationship was substantially stronger for Central America than the global baseline.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-role">Independent Study Researcher</span>
+        <span class="item-dates">May – Jul 2026</span>
+      </div>
+      <div class="item-org">NYU Steinhardt</div>
       <ul>
-        <li>
-          <strong>Psychometric Modeling of Duolingo Spanish Reverse-Tap Exercises</strong> (2026, with Shen Shen Lau)<br>
-          Applied EFA, Rasch IRT, and Cognitive Diagnostic Modeling to ~540K exercise trials to predict item difficulty from morphosyntactic features. Pivoted to response-time-based fluency modeling after a ceiling effect (~94.7% accuracy) rendered accuracy-based approaches degenerate.
-        </li>
-        <li>
-          <strong>Are New York State ELA Test Reading Passages Robust to LLM Scrutiny?</strong> (2026, with Howell Lu &amp; Ruiting Shen)<br>
-          Compared Claude Opus 4.5, six local models via Ollama (reasoning and instruction-tuned), and a Random Forest on Flesch-Kincaid/Dale-Chall/CTTR features to evaluate grade-level reading complexity in the NYST ELA. All models showed systematic compression toward the middle of the grade scale, with instruction-tuned models surprisingly matching Opus despite running on consumer hardware.
-        </li>
-        <li>
-          <strong>Borders Crossed, Connections Kept: Central American Migration and the Social Connectedness Index</strong> (2026, with Genie Kwak)<br>
-          Used Meta's Social Connectedness Index to show that Central American nations have anomalously dense social ties with the U.S., arguing the SCI serves as a viable proxy for migration footprint even when undocumented populations are excluded.
-        </li>
+        <li>Applying Generalizability Theory to evaluate the reliability of AI agentic systems under Prof. Klint Kanopka.</li>
+        <li>Designing measurement frameworks to decompose variance in agentic AI outputs across conditions, tasks, and raters.</li>
       </ul>
-    </section>
-  </main>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-role">ARAC Tutor</span>
+        <span class="item-dates">Oct 2025 – Jun 2026</span>
+      </div>
+      <div class="item-org">America Reads and Counts at NYU — P.S. 42</div>
+      <ul>
+        <li>Delivered embedded math and literacy tutoring in a 5th-grade classroom; designed small-group activities and instructional materials.</li>
+        <li>Conducted targeted interventions for English learner students, leveraging Spanish and Russian fluency to bridge language gaps.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-role">Student Practician</span>
+        <span class="item-dates">May – Jun 2024</span>
+      </div>
+      <div class="item-org">Consulate-General of the Republic of Poland — New York</div>
+      <ul>
+        <li>Analyzed legal documents in Polish, Russian, and Ukrainian; produced cross-language summaries for consular proceedings.</li>
+        <li>Facilitated citizenship and documentation interviews across three languages.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-role">NYU Steinhardt</span>
+        <span class="item-dates">Expected May 2027</span>
+      </div>
+      <div class="item-org">MS, Applied Statistics for Social Science Research</div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-role">Macaulay Honors College at Hunter College</span>
+        <span class="item-dates">Jun 2025</span>
+      </div>
+      <div class="item-org">BA, Mathematics &amp; History — full merit scholarship</div>
+    </div>
+
+    <hr style="margin: 1.5rem 0;">
+
+    <h2>Honors</h2>
+    <ul class="award-list">
+      <li>President of the Society for Statistics Students</li>
+      <li>Mellon Public Humanities and Social Justice Program Participant</li>
+      <li>Cooper Fellow — Dean's List at Hunter College</li>
+      <li>Gilder Lehrman Institute Richard Gilder History Prize, 2020</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section id="coursework">
+    <h2>Coursework</h2>
+
+    <div class="course-block">
+      <div class="course-label">Graduate</div>
+      <p>Applied Probability, Statistical Computing, Supervised &amp; Unsupervised Machine Learning, Generalized Linear Models and Extensions, Frequentist Inference, Databases and Data Science, Generative AI for the Social Sciences, Modern Approaches in Measurement</p>
+    </div>
+
+    <div class="course-block">
+      <div class="course-label">Mathematics</div>
+      <p>Linear Algebra, Abstract Algebra, Vector Analysis, Ordinary Differential Equations, Modern Mathematical Analysis, Advanced Probability Theory <em>(graduate)</em></p>
+    </div>
+
+    <hr style="margin: 1.5rem 0;">
+
+    <h2>Skills</h2>
+
+    <div class="skill-label">Languages</div>
+    <div class="skill-row">
+      <span>R</span><span>Python</span><span>SQL</span>
+    </div>
+
+    <div class="skill-label" style="margin-top: 0.6rem;">Tools</div>
+    <div class="skill-row">
+      <span>Git</span><span>RStudio</span><span>Positron</span><span>Cursor</span><span>Claude Code</span><span>Ollama</span>
+    </div>
+
+    <div class="skill-label" style="margin-top: 0.6rem;">Foreign Languages</div>
+    <div class="skill-row">
+      <span>Polish</span><span>Spanish</span><span>Russian</span><span>German</span><span>Ukrainian</span><span>Mandarin (beginner)</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 Thomas Szymanski &nbsp;&middot;&nbsp; <a href="https://github.com/tfs6492" target="_blank" rel="noopener">github.com/tfs6492</a></span>
+  </div>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav a');
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        const t = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (t) t.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' }).observe !== undefined &&
+  sections.forEach(s =>
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(a => a.classList.remove('active'));
+          const t = document.querySelector(`nav a[href="#${e.target.id}"]`);
+          if (t) t.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' }).observe(s)
+  );
+</script>
+
 </body>
 </html>
