@@ -6,31 +6,34 @@
   <title>Thomas Szymanski</title>
   <meta name="author" content="Thomas Szymanski">
   <meta name="description" content="MS Applied Statistics, NYU Steinhardt">
+  <meta name="theme-color" content="#faf8f4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --bg:       #1c1c1e;
-      --text:     #c9c5be;
-      --muted:    #6b6860;
-      --dim:      #3a3835;
-      --heading:  #e2ddd7;
-      --link:     #8ab4c9;
-      --border:   #2e2c29;
-      --nav-bg:   rgba(28, 28, 30, 0.92);
+      --bg:          #faf8f4;  /* warm paper */
+      --text:        #34322e;
+      --muted:       #6d6961;
+      --heading:     #1f1e1b;
+      --border:      #e7e2d9;
+      --nav-bg:      rgba(250, 248, 244, 0.92);
+      --blue:        #255f8e;  /* links, interactive */
+      --blue-soft:   #e7eef5;
+      --green:       #2f6b4f;  /* section markers, structure */
+      --green-soft:  #e8f0eb;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { font-size: 112.5%; scroll-behavior: smooth; scroll-padding-top: 64px; }
 
     body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Nunito Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 300;
+      font-size: 1rem;
+      font-weight: 400;
       line-height: 1.7;
       min-height: 100vh;
     }
@@ -54,15 +57,18 @@
       align-items: center;
       justify-content: flex-end;
       gap: 1.75rem;
+      overflow-x: auto;
     }
     nav a {
       color: var(--muted);
       text-decoration: none;
       font-size: 0.875rem;
-      font-weight: 400;
-      transition: color 0.15s;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
     }
-    nav a:hover, nav a.active { color: var(--heading); }
+    nav a:hover { color: var(--heading); text-decoration: none; }
+    nav a.active { color: var(--green); border-bottom-color: var(--green); }
 
     /* ── MAIN ── */
     main {
@@ -90,46 +96,39 @@
     h1 strong { font-weight: 700; }
 
     .desc {
-      color: var(--muted);
+      color: var(--green);
       font-size: 0.95rem;
+      font-weight: 600;
       margin-bottom: 1rem;
     }
 
     p { margin-bottom: 0.9rem; font-size: 0.95rem; }
     p:last-child { margin-bottom: 0; }
 
-    a { color: var(--link); text-decoration: none; }
+    a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* avatar */
     .avatar {
       flex-shrink: 0;
-      width: 130px;
+      width: 140px;
     }
     .avatar-circle {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      background: var(--dim);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--border), 0 4px 14px rgba(31, 30, 27, 0.08);
       overflow: hidden;
     }
     .avatar-circle img {
+      display: block;
       width: 100%; height: 100%;
-      object-fit: cover; border-radius: 50%;
-    }
-    .avatar-initials {
-      font-size: 1.6rem;
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: 0.02em;
+      object-fit: cover;
     }
     .avatar-meta {
-      margin-top: 0.6rem;
-      font-size: 0.72rem;
+      margin-top: 0.7rem;
+      font-size: 0.75rem;
       color: var(--muted);
       line-height: 1.5;
     }
@@ -142,11 +141,11 @@
     }
     .social a {
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.05rem;
       transition: color 0.15s;
       text-decoration: none;
     }
-    .social a:hover { color: var(--heading); }
+    .social a:hover { color: var(--blue); }
 
     /* ── DIVIDER ── */
     hr {
@@ -159,31 +158,42 @@
     section { margin-bottom: 2.5rem; }
 
     h2 {
-      font-size: 1rem;
-      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      font-weight: 700;
       color: var(--heading);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-bottom: 1.1rem;
+    }
+    h2::before {
+      content: '';
+      width: 1.1rem;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--green);
     }
 
     /* projects */
     .project { margin-bottom: 1.6rem; }
     .project-title {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--heading);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 0.15rem;
     }
     .project-title a { color: inherit; }
-    .project-title a:hover { color: var(--link); text-decoration: none; }
+    .project-title a:hover { color: var(--blue); text-decoration: none; }
+    .project-title i { font-size: 0.7rem; color: var(--muted); margin-left: 0.3rem; }
     .project-meta {
       font-size: 0.8rem;
       color: var(--muted);
       margin-bottom: 0.4rem;
       font-style: italic;
     }
-    .project p { font-size: 0.875rem; }
+    .project p { font-size: 0.9rem; }
 
     /* experience / education */
     .item { margin-bottom: 1.4rem; }
@@ -195,9 +205,9 @@
       flex-wrap: wrap;
     }
     .item-role {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--heading);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
     .item-dates {
       font-size: 0.78rem;
@@ -205,61 +215,55 @@
       white-space: nowrap;
     }
     .item-org {
-      font-size: 0.83rem;
+      font-size: 0.85rem;
       color: var(--muted);
       margin-bottom: 0.35rem;
     }
     .item ul {
       padding-left: 1.1rem;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
     }
     .item ul li { margin-bottom: 0.25rem; }
+    .item ul li::marker { color: var(--green); }
 
     /* awards */
     .award-list { list-style: none; }
     .award-list li {
-      font-size: 0.875rem;
-      padding: 0.28rem 0;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
       border-bottom: 1px solid var(--border);
-      color: var(--text);
     }
     .award-list li:last-child { border-bottom: none; }
 
     /* coursework */
     .course-block { margin-bottom: 0.9rem; }
-    .course-label {
+    .course-label, .skill-label {
       font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--muted);
+      font-weight: 700;
+      color: var(--green);
       text-transform: uppercase;
       letter-spacing: 0.07em;
       margin-bottom: 0.3rem;
     }
-    .course-block p { font-size: 0.875rem; }
+    .course-block p { font-size: 0.9rem; }
 
-    /* skill rows */
+    /* skill chips */
     .skill-row {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
-      margin-bottom: 0.5rem;
-      font-size: 0.83rem;
-    }
-    .skill-label {
-      color: var(--muted);
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.9rem;
     }
     .skill-row span {
-      color: var(--text);
+      font-size: 0.8rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--heading);
     }
-    .skill-row span + span::before {
-      content: '·';
-      margin-right: 0.5rem;
-      color: var(--dim);
+    .skill-row span em {
+      font-style: normal;
+      color: var(--muted);
     }
 
     /* ── FOOTER ── */
@@ -268,6 +272,7 @@
       bottom: 0; left: 0; right: 0;
       background: var(--nav-bg);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-top: 1px solid var(--border);
       z-index: 50;
     }
@@ -283,15 +288,16 @@
       font-size: 0.75rem;
       color: var(--muted);
     }
-    .footer-inner a {
-      color: var(--muted);
-      text-decoration: none;
-    }
-    .footer-inner a:hover { color: var(--heading); }
+    .footer-inner a { color: var(--muted); }
+    .footer-inner a:hover { color: var(--blue); }
 
     @media (max-width: 560px) {
-      .hero { flex-direction: column-reverse; align-items: center; }
+      .nav-inner { justify-content: space-between; gap: 0.75rem; padding: 0 1rem; scrollbar-width: none; }
+      .nav-inner::-webkit-scrollbar { display: none; }
+      nav a { font-size: 0.8rem; }
+      .hero { flex-direction: column-reverse; align-items: center; gap: 1.5rem; }
       .avatar { text-align: center; }
+      .avatar-circle { margin: 0 auto; }
       h1 { font-size: 1.65rem; }
     }
   </style>
@@ -319,6 +325,7 @@
         <p>I am an MS student in <a href="https://steinhardt.nyu.edu/departments/applied-statistics-social-science-and-humanities" target="_blank" rel="noopener">Applied Statistics for Social Science Research</a> at <a href="https://steinhardt.nyu.edu/" target="_blank" rel="noopener">NYU Steinhardt</a>, where I also serve as President of the Society for Statistics Students. My current work sits at the intersection of psychometrics, AI agentic systems, and social-science methodology.</p>
 
         <div class="social">
+          <a href="mailto:tfs6492@nyu.edu" title="Email"><i class="fa-solid fa-envelope"></i></a>
           <a href="https://github.com/tfs6492" title="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
           <a href="https://www.linkedin.com/in/thomas-szymanski-2327891b3/" title="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
         </div>
@@ -326,7 +333,7 @@
 
       <div class="avatar">
         <div class="avatar-circle">
-          <span class="avatar-initials">TS</span>
+          <img src="images/thomas.jpg" alt="Portrait of Thomas Szymanski" width="140" height="140">
         </div>
         <div class="avatar-meta">
           NYU Steinhardt<br>
@@ -342,19 +349,19 @@
     <h2>Projects</h2>
 
     <div class="project">
-      <div class="project-title"><a href="https://github.com/tfs6492/nys-ela-llm-eval" target="_blank" rel="noopener">LLM &amp; ML Evaluation of NYS ELA Reading Passages</a></div>
+      <div class="project-title"><a href="https://github.com/tfs6492/nys-ela-llm-eval" target="_blank" rel="noopener">LLM &amp; ML Evaluation of NYS ELA Reading Passages<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
       <div class="project-meta">Spring 2026 — with Howell Lu &amp; Ruiting Shen</div>
-      <p>Evaluated whether grade-level complexity of 2024–2025 New York State ELA reading passages is recoverable by LLMs and traditional readability metrics. Deployed Claude Opus 4.5 alongside six local models via Ollama and a Random Forest on Flesch-Kincaid, Dale-Chall, and CTTR features. All models showed systematic grade-level compression; the Random Forest achieved the lowest RMSE.</p>
+      <p>Evaluated whether grade-level complexity of 2024–2025 New York State ELA reading passages is recoverable by LLMs and traditional readability metrics. Deployed Claude Opus 4.5 alongside six local models via Ollama and a Random Forest on Flesch-Kincaid, Dale-Chall, and CTTR features. All models showed systematic grade-level compression; instruction-tuned local models closely approximated Opus despite running on consumer hardware, and the Random Forest achieved the lowest RMSE.</p>
     </div>
 
     <div class="project">
-      <div class="project-title"><a href="https://github.com/tfs6492/duolingo-es-psychometrics" target="_blank" rel="noopener">Psychometric Modeling of Duolingo Spanish Reverse-Tap Exercises</a></div>
+      <div class="project-title"><a href="https://github.com/tfs6492/duolingo-es-psychometrics" target="_blank" rel="noopener">Psychometric Modeling of Duolingo Spanish Reverse-Tap Exercises<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
       <div class="project-meta">Spring 2026 — with Shen Shen Lau</div>
       <p>Applied EFA, Rasch IRT, and Cognitive Diagnostic Models to ~540K Duolingo trial responses. Near-ceiling accuracy (~95%) precluded latent class recovery; a pivot to response-time-based CDM yielded non-degenerate results. Verb tense/mood emerged as the most consistent driver of item difficulty across all three frameworks.</p>
     </div>
 
     <div class="project">
-      <div class="project-title"><a href="https://github.com/tfs6492/sci-central-america-migration" target="_blank" rel="noopener">Social Connectedness and Central American Migration to the U.S.</a></div>
+      <div class="project-title"><a href="https://github.com/tfs6492/sci-central-america-migration" target="_blank" rel="noopener">Social Connectedness and Central American Migration to the U.S.<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
       <div class="project-meta">Spring 2026 — with Genie Kwak</div>
       <p>Analyzed Meta's Social Connectedness Index alongside DHS lawful permanent resident data (2013–2024). Four Central American countries exceeded global SCI averages by wide margins — Honduras at ~5× — and the SCI–immigration relationship was substantially stronger for Central America than the global baseline.</p>
     </div>
@@ -372,20 +379,23 @@
       </div>
       <div class="item-org">NYU Steinhardt</div>
       <ul>
-        <li>Applying Generalizability Theory to evaluate the reliability of AI agentic systems under Prof. Klint Kanopka.</li>
-        <li>Designing measurement frameworks to decompose variance in agentic AI outputs across conditions, tasks, and raters.</li>
+        <li>Applied Generalizability Theory to evaluate the performance and reliability of AI agentic systems under Prof. Klint Kanopka.</li>
+        <li>Designed measurement frameworks to decompose variance in agentic AI outputs across conditions, tasks, and raters.</li>
+        <li>Found, via G-theory modeling of GPT-5.4 Mini on GAIA level-one tasks under a crossed agentic hierarchy × reasoning design, that agentic hierarchy (HuggingFace smolagents) drove variance in the results.</li>
       </ul>
     </div>
 
     <div class="item">
       <div class="item-header">
         <span class="item-role">ARAC Tutor</span>
-        <span class="item-dates">Oct 2025 – Jun 2026</span>
+        <span class="item-dates">Oct 2025 – Present</span>
       </div>
       <div class="item-org">America Reads and Counts at NYU — P.S. 42</div>
       <ul>
-        <li>Delivered embedded math and literacy tutoring in a 5th-grade classroom; designed small-group activities and instructional materials.</li>
-        <li>Conducted targeted interventions for English learner students, leveraging Spanish and Russian fluency to bridge language gaps.</li>
+        <li>Deliver embedded math and literacy tutoring in a 5th-grade classroom; design small-group activities and original instructional materials.</li>
+        <li>Conduct targeted interventions for English learner students, leveraging Spanish and Russian fluency to bridge language gaps.</li>
+        <li>Analyze student assessment data to identify patterns of need and inform differentiated instruction.</li>
+        <li>Began learning Mandarin Chinese to better serve the classroom's Chinese-speaking English learners.</li>
       </ul>
     </div>
 
@@ -396,6 +406,7 @@
       </div>
       <div class="item-org">Consulate-General of the Republic of Poland — New York</div>
       <ul>
+        <li>Researched Polish business activities and diplomatic events; organized findings into Excel reports and databases used by consular staff.</li>
         <li>Analyzed legal documents in Polish, Russian, and Ukrainian; produced cross-language summaries for consular proceedings.</li>
         <li>Facilitated citizenship and documentation interviews across three languages.</li>
       </ul>
@@ -412,7 +423,7 @@
         <span class="item-role">NYU Steinhardt</span>
         <span class="item-dates">Expected May 2027</span>
       </div>
-      <div class="item-org">MS, Applied Statistics for Social Science Research</div>
+      <div class="item-org">MS, Applied Statistics for Social Science Research — Concentration: General Applied Statistics</div>
     </div>
 
     <div class="item">
@@ -420,7 +431,7 @@
         <span class="item-role">Macaulay Honors College at Hunter College</span>
         <span class="item-dates">Jun 2025</span>
       </div>
-      <div class="item-org">BA, Mathematics &amp; History — full merit scholarship</div>
+      <div class="item-org">BA, Mathematics &amp; History</div>
     </div>
 
     <hr style="margin: 1.5rem 0;">
@@ -428,6 +439,7 @@
     <h2>Honors</h2>
     <ul class="award-list">
       <li>President of the Society for Statistics Students</li>
+      <li>Full merit scholarship to Macaulay Honors College (4 years)</li>
       <li>Mellon Public Humanities and Social Justice Program Participant</li>
       <li>Cooper Fellow — Dean's List at Hunter College</li>
       <li>Gilder Lehrman Institute Richard Gilder History Prize, 2020</li>
@@ -441,31 +453,31 @@
 
     <div class="course-block">
       <div class="course-label">Graduate</div>
-      <p>Applied Probability, Statistical Computing, Supervised &amp; Unsupervised Machine Learning, Generalized Linear Models and Extensions, Frequentist Inference, Databases and Data Science, Generative AI for the Social Sciences, Modern Approaches in Measurement</p>
+      <p>Applied Probability, Statistical Computing, Intermediate Quantitative Methods: General Linear Model, Data Science for Social Impact, Supervised &amp; Unsupervised Machine Learning, Generalized Linear Models and Extensions, Frequentist Inference, Databases and Data Science, Generative AI for the Social Sciences, Modern Approaches in Measurement, Causal Inference, Messy Data and Machine Learning, Multi-Level Modeling, Statistical Practice and Proficiency</p>
     </div>
 
     <div class="course-block">
-      <div class="course-label">Mathematics</div>
-      <p>Linear Algebra, Abstract Algebra, Vector Analysis, Ordinary Differential Equations, Modern Mathematical Analysis, Advanced Probability Theory <em>(graduate)</em></p>
+      <div class="course-label">Undergraduate</div>
+      <p>Linear Algebra, Abstract Algebra, Vector Analysis, Ordinary Differential Equations, Modern Mathematical Analysis I, Geometries I <em>(graduate)</em>, Advanced Probability Theory I <em>(graduate)</em></p>
     </div>
 
     <hr style="margin: 1.5rem 0;">
 
     <h2>Skills</h2>
 
-    <div class="skill-label">Languages</div>
+    <div class="skill-label">Programming</div>
     <div class="skill-row">
-      <span>R</span><span>Python</span><span>SQL</span>
+      <span>R <em>· proficient</em></span><span>Python <em>· intermediate</em></span><span>SQL <em>· beginner</em></span>
     </div>
 
-    <div class="skill-label" style="margin-top: 0.6rem;">Tools</div>
+    <div class="skill-label">Tools</div>
     <div class="skill-row">
-      <span>Git</span><span>RStudio</span><span>Positron</span><span>Cursor</span><span>Claude Code</span><span>Ollama</span>
+      <span>Git</span><span>CLI</span><span>RStudio</span><span>Positron</span><span>Cursor</span><span>Claude Code</span><span>Codex</span><span>Ollama</span>
     </div>
 
-    <div class="skill-label" style="margin-top: 0.6rem;">Foreign Languages</div>
+    <div class="skill-label">Foreign Languages</div>
     <div class="skill-row">
-      <span>Polish</span><span>Spanish</span><span>Russian</span><span>German</span><span>Ukrainian</span><span>Mandarin (beginner)</span>
+      <span>Polish <em>· fluent</em></span><span>Spanish <em>· advanced</em></span><span>Russian <em>· advanced</em></span><span>German <em>· lower-intermediate</em></span><span>Ukrainian <em>· lower-intermediate</em></span><span>Mandarin <em>· beginner</em></span>
     </div>
   </section>
 
@@ -478,28 +490,14 @@
 </footer>
 
 <script>
-  const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('nav a');
-  new IntersectionObserver(entries => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(a => a.classList.remove('active'));
-        const t = document.querySelector(`nav a[href="#${e.target.id}"]`);
-        if (t) t.classList.add('active');
-      }
+      if (!e.isIntersecting) return;
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`));
     });
-  }, { rootMargin: '-40% 0px -55% 0px' }).observe !== undefined &&
-  sections.forEach(s =>
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(a => a.classList.remove('active'));
-          const t = document.querySelector(`nav a[href="#${e.target.id}"]`);
-          if (t) t.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' }).observe(s)
-  );
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
 </script>
 
 </body>
