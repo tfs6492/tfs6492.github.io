@@ -63,6 +63,7 @@
       color: var(--muted);
       text-decoration: none;
       font-size: 0.875rem;
+      white-space: nowrap;
       padding: 0.2rem 0;
       border-bottom: 2px solid transparent;
       transition: color 0.15s, border-color 0.15s;
@@ -308,6 +309,7 @@
   <div class="nav-inner">
     <a href="#about" class="active">about</a>
     <a href="#projects">projects</a>
+    <a href="#side-projects">side projects</a>
     <a href="#experience">experience</a>
     <a href="#education">education</a>
     <a href="#coursework">coursework</a>
@@ -364,6 +366,18 @@
       <div class="project-title"><a href="https://github.com/tfs6492/sci-central-america-migration" target="_blank" rel="noopener">Social Connectedness and Central American Migration to the U.S.<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
       <div class="project-meta">Spring 2026 — with Genie Kwak</div>
       <p>Analyzed Meta's Social Connectedness Index alongside DHS lawful permanent resident data (2013–2024). Four Central American countries exceeded global SCI averages by wide margins — Honduras at ~5× — and the SCI–immigration relationship was substantially stronger for Central America than the global baseline.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="side-projects">
+    <h2>Side Projects</h2>
+
+    <div class="project">
+      <div class="project-title"><a href="https://github.com/tfs6492/news-aggregator-en" target="_blank" rel="noopener">Mandarin News Reader: Local-LLM Graded Reading Tool<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+      <div class="project-meta">Fall 2026 — personal project</div>
+      <p>A Python terminal app for learning Mandarin from live news. It scrapes headlines from six Chinese tech and electric-vehicle sites and uses local LLMs served through Ollama in a two-model pipeline: Gemma condenses each article into HSK 3–4 sentences shown as hanzi, pinyin, and English, and Qwen grades my own translations with per-sentence feedback and retries. Everything runs locally, saved articles replay offline, and a custom VT-sequence renderer handles double-width CJK text on both macOS and Windows.</p>
     </div>
   </section>
 
