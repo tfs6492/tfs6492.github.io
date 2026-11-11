@@ -1,2 +1,8 @@
 .DS_Store
 IMG_*.jpeg
+
+# Microsoft Office temporary files
+~$*.docx
+~$*.doc
+~WRL*.tmp
+*.tmp
