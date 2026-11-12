@@ -353,7 +353,7 @@
     <div class="project">
       <div class="project-title"><a href="https://github.com/tfs6492/nys-ela-llm-eval" target="_blank" rel="noopener">Are NYS ELA Test Reading Passages Robust to LLM Scrutiny?<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
       <div class="project-meta">Spring 2026 — with Howell Lu &amp; Ruiting Shen</div>
-      <p>Tested whether the grade-level complexity of 182 released NYS ELA reading passages (2019 and 2022–2026, grades 3–8) can be recovered by LLMs and by a Random Forest trained on Flesch-Kincaid, Dale-Chall, and CTTR features. Treated the assigned grade as a reference point to measure agreement with, not as ground truth. Gemini 3.6 Flash and Gemini 3.6 Thinking both compressed toward the middle of the scale, underestimating grade 6–8 passages; extended reasoning did not change this pattern. The out-of-bag Random Forest had the lowest RMSE against assigned levels (1.05, vs. 1.58 and 1.64 for the Gemini models), but it also overestimated lower grades and flattened at the top. The consistent divergence suggests the quantitative complexity signal does not cleanly stratify by grade.</p>
+      <p>Tested whether the grade level of 182 released NYS ELA reading passages (grades 3–8) can be recovered by two Gemini models and by a Random Forest trained on readability features (Flesch-Kincaid, Dale-Chall, CTTR). Both LLMs compressed toward the middle of the scale, underestimating grade 6–8 passages, and extended reasoning didn't change that. The Random Forest had the lowest RMSE (1.05 vs. 1.58 and 1.64) but overestimated lower grades and flattened at the top, suggesting the quantitative complexity signal does not cleanly stratify by grade.</p>
     </div>
 
     <div class="project">
@@ -406,8 +406,8 @@
       <div class="item-org">NYU Steinhardt</div>
       <ul>
         <li>Conducted supervised research under Prof. Klint Kanopka, importing Generalizability Theory (G-theory) as a replicable model evaluation tool to determine which experimental conditions explain the performance and failure types of an AI agentic system.</li>
-        <li>Engineered an experimental design for analyzing LLM task completion on an established web search benchmark (GAIA).</li>
-        <li>Found that varying agentic hierarchy under the smolagents (HuggingFace) agentic framework drove variance in the LLM's performance.</li>
+        <li>Engineered an experimental design for analyzing LLM task completion on the GAIA web search benchmark, establishing a standardized evaluation pipeline reusable across models and agentic harnesses.</li>
+        <li>Found that task structure and workflow hierarchy (varied under HuggingFace's smolagents framework) drove far more of the variance in agentic reliability than model reasoning level.</li>
       </ul>
     </div>
 
@@ -491,20 +491,15 @@
 
     <div class="skill-label">Programming</div>
     <div class="skill-row">
-      <span>R <em>· proficient</em></span><span>Python <em>· beginner</em></span><span>SQL <em>· beginner</em></span>
+      <span>R <em>· advanced</em></span><span>SQL <em>· proficient</em></span><span>Python <em>· beginner</em></span>
     </div>
 
-    <div class="skill-label">Development Tools &amp; IDEs</div>
+    <div class="skill-label">Development Environment</div>
     <div class="skill-row">
-      <span>Git</span><span>CLI</span><span>RStudio</span><span>Positron</span>
+      <span>Git</span><span>CLI</span><span>RStudio</span><span>Zed</span><span>Claude Code</span><span>Google Antigravity</span><span>Hermes Agent</span><span>Pi Agent</span>
     </div>
 
-    <div class="skill-label">Harnesses</div>
-    <div class="skill-row">
-      <span>Claude Code</span><span>Codex</span><span>Hermes</span><span>Pi</span>
-    </div>
-
-    <div class="skill-label">Local Inference Frameworks</div>
+    <div class="skill-label">Local LLM Stack</div>
     <div class="skill-row">
       <span>Unsloth</span><span>Ollama</span><span>llama.cpp</span>
     </div>
