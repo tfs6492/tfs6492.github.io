@@ -351,9 +351,9 @@
     <h2>Projects</h2>
 
     <div class="project">
-      <div class="project-title"><a href="https://github.com/tfs6492/nys-ela-llm-eval" target="_blank" rel="noopener">LLM &amp; ML Evaluation of NYS ELA Reading Passages<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+      <div class="project-title"><a href="https://github.com/tfs6492/nys-ela-llm-eval" target="_blank" rel="noopener">Are NYS ELA Test Reading Passages Robust to LLM Scrutiny?<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
       <div class="project-meta">Spring 2026 — with Howell Lu &amp; Ruiting Shen</div>
-      <p>Tested whether the grade-level complexity of 2024–2025 New York State ELA reading passages is recoverable by LLMs and traditional readability metrics. Benchmarked Claude Opus 4.5 and six local models via Ollama against a Random Forest on Flesch-Kincaid, Dale-Chall, and CTTR features. All models systematically compressed grade levels; instruction-tuned local models closely approximated Opus on consumer hardware, and the Random Forest achieved the lowest RMSE.</p>
+      <p>Tested whether the grade-level complexity of 182 released NYS ELA reading passages (2019 and 2022–2026, grades 3–8) can be recovered by LLMs and by a Random Forest trained on Flesch-Kincaid, Dale-Chall, and CTTR features. Treated the assigned grade as a reference point to measure agreement with, not as ground truth. Gemini 3.6 Flash and Gemini 3.6 Thinking both compressed toward the middle of the scale, underestimating grade 6–8 passages; extended reasoning did not change this pattern. The out-of-bag Random Forest had the lowest RMSE against assigned levels (1.05, vs. 1.58 and 1.64 for the Gemini models), but it also overestimated lower grades and flattened at the top. The consistent divergence suggests the quantitative complexity signal does not cleanly stratify by grade.</p>
     </div>
 
     <div class="project">
