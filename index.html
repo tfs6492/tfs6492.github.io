@@ -375,6 +375,12 @@
     <h2>Side Projects</h2>
 
     <div class="project">
+      <div class="project-title"><a href="https://github.com/tfs6492/nys-ela-open-llm" target="_blank" rel="noopener">Instruct vs. Reasoning Local LLMs on NYS ELA Passage Grade Levels<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+      <div class="project-meta">Fall 2026 — personal project, extending the Spring 2026 group study</div>
+      <p>Extended my group study from cloud Gemini calls to ten local open-weights LLMs (Phi-4, Llama-3.1, Ministral-3, Qwen3-VL, Seed-Coder; five matched instruct vs. reasoning pairs) run on a single RTX 4090 via LM Studio and llama.cpp, scoring the same 182 NYS ELA passages. Every method compressed toward the middle of the scale: instruct models plateaued near grade 6 (RMSE 1.54–1.71), while reasoning models drifted downward, often exhausted their token budgets before answering, and ran 25–146× slower. An out-of-bag Random Forest on readability metrics again agreed most closely with assigned grades (RMSE 1.05).</p>
+    </div>
+
+    <div class="project">
       <div class="project-title"><a href="https://github.com/tfs6492/news-aggregator-en" target="_blank" rel="noopener">Mandarin News Reader: Local-LLM Graded Reading Tool<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
       <div class="project-meta">Fall 2026 — personal project</div>
       <p>A Python terminal app for learning Mandarin from live news. It scrapes headlines from six Chinese tech and electric-vehicle sites and runs a two-model local LLM pipeline on llama.cpp: Gemma rewrites each article in HSK 3–4 sentences shown as hanzi, pinyin, and English, and Qwen grades my own translations with per-sentence feedback. Everything runs locally, saved articles replay offline, and a custom renderer handles double-width CJK text on both macOS and Windows.</p>
